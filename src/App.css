@@ -1,3 +1,7 @@
 body {
   background: lightgrey;
 }
+
+.products__img {
+  max-width: 200px;
+}

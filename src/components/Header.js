@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function Header(props){
   return (
@@ -7,15 +8,15 @@ function Header(props){
         <nav>
           <ul className="header__menu--left">
             <li>
-              <a href="/" className="header__shop-name">{props.shopName}</a>
+              <Link to="/" className="header__shop-name">{props.shopName}</Link>
             </li>
           </ul>
           <ul className="header__menu--right">
             <li>
-              <a href="/jackets" className="header__links">jackets</a>
+              <Link to="/jackets" className="header__links">jackets</Link>
             </li>
             <li>
-              <a href="/coats" className="header__links">coats</a>
+              <Link to="/coats" className="header__links">coats</Link>
             </li>
           </ul>
         </nav>

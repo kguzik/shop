@@ -1,0 +1,41 @@
+body {
+  font-family: $base-font-family;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  list-style: none;
+}
+
+.link {
+  padding: 10px 15px;
+  margin-top: 20px;
+  font-size: 1.3rem;
+  transition: 0.4s all;
+  border: $base-border;
+  background: $white;
+  color: $black;
+  letter-spacing: 2px;
+}
+
+.link:hover {
+  transform: scale(1.05);
+}
+
+.title {
+  text-align: center;
+  padding-top: 20px;
+}
+
+.subtitle {
+  background: $white;
+}

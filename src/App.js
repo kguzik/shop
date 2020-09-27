@@ -27,15 +27,15 @@ function App() {
   return (
     <>
       <MuiThemeProvider theme={theme}>
-        <Header shopName={shopName}/>
-          <main>
-            <Router>
-                <Route path="/" exact render={(props) => (<Home {...props} title="Choose the perfect outfit." subtitle="Find the most fashionable clothes and accessories in online shop! New products every day. Choose a style and buy without leaving home!"/>)}/>
-                <Route path="/:category" exact component={Products}/>
-                <Route path="/:category/:id" exact component={Details}/>
-            </Router>
-          </main>
-        <Footer info="This page doesn't offer any real products."/>
+        <Router basename='/shop'>
+          <Header shopName={shopName}/>
+            <main>
+              <Route path="/" exact render={(props) => (<Home {...props} title="Choose the perfect outfit." subtitle="Find the most fashionable clothes and accessories in online shop! New products every day. Choose a style and buy without leaving home!"/>)}/>
+              <Route path="/:category" exact component={Products}/>
+              <Route path="/:category/:id" exact component={Details}/>
+            </main>
+          <Footer info="This page doesn't offer any real products."/>
+        </Router>
       </MuiThemeProvider>
     </>
   );

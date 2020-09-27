@@ -1,0 +1,15 @@
+.product {
+  margin-top: 50px;
+
+  &__details {
+    padding-left: 20px;
+
+    &--description {
+      padding-right: 10%;
+    }
+  }
+
+  &__img {
+    max-width: 100%;
+  }
+}

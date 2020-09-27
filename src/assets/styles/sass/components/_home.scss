@@ -1,0 +1,23 @@
+.home-page {
+  min-height: 90vh;
+  @extend %background-center-cover-norepeat;
+  background-image: url(../../../images/background.jpeg);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  text-align: center;
+
+  .subtitle {
+    align-self: flex-end;
+    margin-left: auto;
+    padding: 20px;
+  }
+
+  &__title {
+    background: $transparent-grey;
+    padding: 10px;
+    letter-spacing: 1px;
+  }
+}

@@ -1,22 +1,42 @@
 import React from 'react';
-import './App.css';
-import Products from './components/Products';
-import Home from './components/Home';
+import './App.scss';
+import Products from './components/products/Products';
+import Home from './components/home/Home';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import Header from './components/Header';
+import Footer from './components/Footer';
+import Details from './components/products/Details';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: '#000'
+    }
+  },
+  typography: {
+    h2: {
+      fontSize: 22
+    }
+  },
+});
 
 const shopName = 'online shop';
 
 function App() {
   return (
     <>
-    <Header shopName={shopName}/>
-      <main>
-        <Router>
-            <Route path="/" exact render={(props) => (<Home {...props} title="Welcome!" linkText="See products"/>)}/>
-            <Route path="/products" exact component={Products}/>
-        </Router>
-      </main>
+      <MuiThemeProvider theme={theme}>
+        <Header shopName={shopName}/>
+          <main>
+            <Router>
+                <Route path="/" exact render={(props) => (<Home {...props} title="Choose the perfect outfit." subtitle="Find the most fashionable clothes and accessories in online shop! New products every day. Choose a style and buy without leaving home!"/>)}/>
+                <Route path="/:category" exact component={Products}/>
+                <Route path="/:category/:id" exact component={Details}/>
+            </Router>
+          </main>
+        <Footer info="This page doesn't offer any real products."/>
+      </MuiThemeProvider>
     </>
   );
 }

@@ -1,0 +1,31 @@
+.header {
+  padding: 12px;
+  border-bottom: $base-border;
+  font-size: 1.1rem;
+
+  nav {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__menu {
+
+    &--right {
+      display: flex;
+
+      a {
+        padding: 0 10px;
+        color: $black;
+      }
+    }
+  }
+
+  &__shop-name {
+    color: $black;
+    letter-spacing: 2px;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}

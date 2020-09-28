@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 
 function Header(props){
   return (
@@ -13,10 +14,13 @@ function Header(props){
           </ul>
           <ul className="header__menu--right">
             <li>
-              <Link to="/jackets" className="header__links">jackets</Link>
+              <Link to="/products/jackets" className="header__links">jackets</Link>
             </li>
             <li>
-              <Link to="/coats" className="header__links">coats</Link>
+              <Link to="/products/coats" className="header__links">coats</Link>
+            </li>
+            <li>
+              <Link to="/shopping-cart" className="header__links"><ShoppingCartIcon/></Link>
             </li>
           </ul>
         </nav>

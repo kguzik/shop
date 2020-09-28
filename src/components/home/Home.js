@@ -12,8 +12,8 @@ function Home(props) {
       </section>
       <section> 
         <Grid container className="categories">
-          <Category title="Jackets" link="/jackets" linkName="See jackets" categoryClassName="categories__item--jackets"/>
-          <Category title="Coats" link="/coats" linkName="See coats" categoryClassName="categories__item--coats"/>
+          <Category title="Jackets" link="products/jackets" linkName="See jackets" categoryClassName="categories__item--jackets"/>
+          <Category title="Coats" link="products/coats" linkName="See coats" categoryClassName="categories__item--coats"/>
         </Grid>
       </section>
     </>

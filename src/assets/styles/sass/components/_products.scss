@@ -3,6 +3,7 @@
 
   &__filters {
     display: flex;
+    justify-content: center;
     border-right: $base-border;
 
     label {
@@ -13,6 +14,7 @@
 
   .product__single {
     display: flex;
+    justify-content: center;
     padding-top: 20px;
 
     &--img {

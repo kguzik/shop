@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.scss';
 import Products from './components/products/Products';
 import Home from './components/home/Home';
@@ -6,7 +6,9 @@ import {BrowserRouter as Router, Route} from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Details from './components/products/Details';
+import ShoppingCart from './components/shop/ShoppingCart';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+
 
 const theme = createMuiTheme({
   palette: {
@@ -19,11 +21,38 @@ const theme = createMuiTheme({
       fontSize: 22
     }
   },
+  overrides: {
+    MuiButton: {
+      padding: 0,
+      text: {
+        background: 'linear-gradient(to right, #2C5364, #203A43, #0F2027)',
+        borderRadius: 4,
+        border: 0,
+        color: 'white',
+        height: 48,
+        padding: '0 30px',
+      },
+    },
+  },
 });
 
 const shopName = 'online shop';
 
 function App() {
+
+  const [cart, setCart] = useState([]);
+
+  function addToCart(category, id, sku){
+    setCart(items => {
+      const itemInCart = items.find(item => sku === item.sku ); 
+      if (itemInCart) {
+        return items.map(item => item.sku === sku ? { ...item, quantity: item.quantity + 1 } : item )
+      } else {
+        return [...items, {category, id, sku, quantity: 1 }]
+      }
+    });
+  }
+
   return (
     <>
       <MuiThemeProvider theme={theme}>
@@ -31,8 +60,9 @@ function App() {
           <Header shopName={shopName}/>
             <main>
               <Route path="/" exact render={(props) => (<Home {...props} title="Choose the perfect outfit." subtitle="Find the most fashionable clothes and accessories in online shop! New products every day. Choose a style and buy without leaving home!"/>)}/>
-              <Route path="/:category" exact component={Products}/>
-              <Route path="/:category/:id" exact component={Details}/>
+              <Route path="/products/:category" exact component={Products}/>
+              <Route path="/products/:category/:id" exact render={(props) => (<Details {...props} addToCart={addToCart} />)}/>
+              <Route path="/shopping-cart" exact render={(props) => (<ShoppingCart {...props} addToCart={addToCart} />)}/>
             </main>
           <Footer info="This page doesn't offer any real products."/>
         </Router>

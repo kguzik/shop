@@ -16,6 +16,10 @@ li {
   list-style: none;
 }
 
+select {
+  padding: 10px;
+}
+
 .link {
   padding: 10px 15px;
   margin-top: 20px;
@@ -27,7 +31,11 @@ li {
   letter-spacing: 2px;
 }
 
-.link:hover {
+button {
+  transition: 0.4s all;
+}
+
+.link:hover, button:hover {
   transform: scale(1.05);
 }
 

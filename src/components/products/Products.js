@@ -23,7 +23,7 @@ function Products() {
           <Grid item xs={12} md={2} className="products__filters">
             <aside>
               <label htmlFor="size">Fitler by size</label>
-              <select id="size" className="products__filtr" value={size} onChange={(e) => setSize(e.target.value)}>
+              <select id="size" className="products__filtr" value={size || ''} onChange={(e) => setSize(e.target.value)}>
                 <option value="" defaultValue>All sizes</option>
                 <option value="36">36</option>
                 <option value="38">38</option>

@@ -31,7 +31,7 @@ function Details(props) {
             <Typography variant="h1" className="product__details--title">{productDetail.name}</Typography>
             <p className="product__details--description">{productDetail.description}</p>
             <p className="product__details--price">Price: {productDetail.price} &euro;</p>
-            <select id="size" className="product__details--size" value={sku} onChange={(e) => setSku(e.target.value)}>
+            <select id="size" className="product__details--size" value={sku || ''} onChange={(e) => setSku(e.target.value)}>
               <option value="" defaultValue>Select size</option>
               {productDetail.sizes.map(productSizes => <option value={productSizes.sku} key={productSizes.sku}>{productSizes.size} </option>)}
             </select>

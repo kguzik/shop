@@ -61,7 +61,7 @@ function App() {
               <Route path="/" exact render={(props) => (<Home {...props} title="Choose the perfect outfit." subtitle="Find the most fashionable clothes and accessories in online shop! New products every day. Choose a style and buy without leaving home!"/>)}/>
               <Route path="/products/:category" exact component={Products}/>
               <Route path="/products/:category/:id" exact render={(props) => (<Details {...props} addToCart={addToCart} />)}/>
-              <Route path="/shopping-cart" exact render={(props) => (<ShoppingCart {...props} addToCart={addToCart} />)}/>
+              <Route path="/shopping-cart" exact render={(props) => (<ShoppingCart {...props} cart={cart} />)}/>
             </main>
           <Footer info="This page doesn't offer any real products."/>
         </Router>

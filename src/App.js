@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './App.scss';
 import Products from './components/products/Products';
 import Home from './components/home/Home';
-import {BrowserRouter as Router, Route} from 'react-router-dom';
+import { HashRouter, Route} from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Details from './components/products/Details';
@@ -55,7 +55,7 @@ function App() {
   return (
     <>
       <MuiThemeProvider theme={theme}>
-        <Router basename='/shop'>
+        <HashRouter basename='/shop'>
           <Header shopName={shopName}/>
             <main>
               <Route path="/" exact render={(props) => (<Home {...props} title="Choose the perfect outfit." subtitle="Find the most fashionable clothes and accessories in online shop! New products every day. Choose a style and buy without leaving home!"/>)}/>
@@ -64,7 +64,7 @@ function App() {
               <Route path="/shopping-cart" exact render={(props) => (<ShoppingCart {...props} cart={cart} />)}/>
             </main>
           <Footer info="This page doesn't offer any real products."/>
-        </Router>
+        </HashRouter>
       </MuiThemeProvider>
     </>
   );

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.scss';
 import Products from './components/products/Products';
 import Home from './components/home/Home';
@@ -38,7 +38,18 @@ const shopName = 'online shop';
 
 function App() {
 
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState(() => {
+    try {
+      return JSON.parse(localStorage.getItem("cart")) ?? [];
+    } catch {
+      console.log('Json parse error');
+      return [];
+    }
+  });
+
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
 
   function addToCart(category, id, sku){
     setCart(items => {

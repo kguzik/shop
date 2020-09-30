@@ -9,7 +9,6 @@ import Details from './components/products/Details';
 import ShoppingCart from './components/shop/ShoppingCart';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
-
 const theme = createMuiTheme({
   palette: {
     primary: {
@@ -52,6 +51,18 @@ function App() {
     });
   }
 
+  function updateQuantity(sku, quantity) {
+    setCart(items => {
+      return items.map(i => ( i.sku === sku ? {...i, quantity } : i ));
+    });
+  }
+
+  function removeItem(sku) {
+    setCart(items => {
+      return items.filter(i => i.sku !== sku);
+    });
+  }
+
   return (
     <>
       <MuiThemeProvider theme={theme}>
@@ -61,7 +72,7 @@ function App() {
               <Route path="/" exact render={(props) => (<Home {...props} title="Choose the perfect outfit." subtitle="Find the most fashionable clothes and accessories in online shop! New products every day. Choose a style and buy without leaving home!"/>)}/>
               <Route path="/products/:category" exact component={Products}/>
               <Route path="/products/:category/:id" exact render={(props) => (<Details {...props} addToCart={addToCart} />)}/>
-              <Route path="/shopping-cart" exact render={(props) => (<ShoppingCart {...props} cart={cart} />)}/>
+              <Route path="/shopping-cart" exact render={(props) => (<ShoppingCart {...props} cart={cart} updateQuantity={updateQuantity} removeItem={removeItem}/>)}/>
             </main>
           <Footer info="This page doesn't offer any real products."/>
         </HashRouter>

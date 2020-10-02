@@ -7,6 +7,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Details from './components/products/Details';
 import ShoppingCart from './components/shop/ShoppingCart';
+import Checkout from './components/shop/Checkout';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
 const theme = createMuiTheme({
@@ -84,6 +85,7 @@ function App() {
               <Route path="/products/:category" exact component={Products}/>
               <Route path="/products/:category/:id" exact render={(props) => (<Details {...props} addToCart={addToCart} />)}/>
               <Route path="/shopping-cart" exact render={(props) => (<ShoppingCart {...props} cart={cart} updateQuantity={updateQuantity} removeItem={removeItem}/>)}/>
+              <Route path="/checkout" exact render={(props) => (<Checkout {...props} cart={cart} />)}/>
             </main>
           <Footer info="This page doesn't offer any real products."/>
         </HashRouter>

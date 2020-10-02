@@ -5,6 +5,8 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import _ from 'lodash';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import { useHistory } from 'react-router-dom';
+import Button from '@material-ui/core/Button';
 
 const theme = createMuiTheme({
   typography: {
@@ -59,6 +61,7 @@ function ShoppingCart({ cart, updateQuantity, removeItem }) {
   }
 
   const numOfItems = cart.reduce(( allItems, item ) => allItems + item.quantity, 0);
+  const history = useHistory();
 
   if(error) throw error;
   if(loading) return <LinearProgress />; 
@@ -74,6 +77,17 @@ function ShoppingCart({ cart, updateQuantity, removeItem }) {
           </p>
       </MuiThemeProvider>
       <ul>{cart.map(renderItem)}</ul>
+      <Grid container justify="flex-end" className="cart__btn">
+        <Button 
+          disabled={numOfItems === 0} 
+          className="btn" 
+          onClick={() => {
+            history.push('/checkout');
+          }}
+        >
+          Go to checkout
+        </Button>
+      </Grid>
     </>
   )
 }
